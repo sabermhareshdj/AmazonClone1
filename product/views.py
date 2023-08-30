@@ -5,8 +5,8 @@ from .models import Product , Brand , ProductImages , Review
 # Create your views here.
 
 class ProductList(ListView):
-    model = Product         
+    model = Product         # context : object_list , model_list
 
 
 class ProductDetail(DetailView):
-    model = Product
+    model = Product          # context 
