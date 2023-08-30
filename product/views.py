@@ -5,7 +5,8 @@ from .models import Product , Brand , ProductImages , Review
 # Create your views here.
 
 class ProductList(ListView):
-    model = Product
+    model = Product         
+
 
 class ProductDetail(DetailView):
     model = Product
