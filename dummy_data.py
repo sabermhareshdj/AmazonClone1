@@ -4,7 +4,7 @@ django.setup()
 
 from faker import Faker
 import random
-from product.models import Brand , Product
+from product.models import Brand , Product , ProductImages
 
 def seed_brand(n):
     fake = Faker()
@@ -23,20 +23,22 @@ def seed_product(n):
     flags = ['New','Sale','Feature']
 
     for _ in range(n):
+
         Product.objects.create(
-            name = fake.name(),
-            image = f'brands/{images[random.randint(0,10)]}' ,
+            name = fake.name() ,
+            image = f'brands/{images[random.randint(0,11)]}' ,
             flag = flags[random.randint(0,2)] ,
-            price = round(random.uniform(20.99,99.99),2 ),
-            sku = random.randint(1000,10000000) ,
+            price = round(random.uniform(20.99,99.99),2) ,
+            sku = random.randint(1000,1000000) , 
             subtitle = fake.text(max_nb_chars=250) ,
-            description = fake.text(max_nb_chars=2000) ,
-            quantity = random.randint(0,30) ,
+            description = fake.text(max_nb_chars=2500) ,
+            quantity = random.randint(0,30),
             brand = Brand.objects.get(id=random.randint(1,105))
+           
         )
 
         print (f'seed {n} Product Successfully')
 
 
-#seed_brand(1000)
-seed_product(2000)
+#seed_brand(500)
+seed_product(500)
